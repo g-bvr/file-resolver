@@ -1,0 +1,7 @@
+#MACRO VARSUBS 1
+Value of VAR[0]: ${VAR[0]}
+#END
+#SET VARABC xyz
+Resolve:
+#VARSUBS ABC
+DONE

@@ -1,0 +1,5 @@
+ABC
+#INCLUDE include2
+#INCLUDE ../include3
+#INCLUDE /include3
+JKL

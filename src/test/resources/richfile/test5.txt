@@ -1,0 +1,5 @@
+#IF ${tag1}
+   #INCLUDE test1.txt
+#ELSE
+   #INCLUDE test4.txt
+#END

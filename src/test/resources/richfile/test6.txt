@@ -1,0 +1,5 @@
+  #MACRO testmacro 4
+     Test03 [0] [3]
+     Test1+ [1+] ok
+  #END
+  #testmacro a b c de

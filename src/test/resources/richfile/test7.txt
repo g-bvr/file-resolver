@@ -1,0 +1,5 @@
+#SET var1 abc
+//#SET var2 cde,fgh
+Test${var1} and ${var2}
+#SET var2 hij
+  Test2 ${var2}

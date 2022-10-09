@@ -1,0 +1,4 @@
+//#SET var1 x
+#IF ${var1}
+yes
+#END

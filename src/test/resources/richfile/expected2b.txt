@@ -1,0 +1,5 @@
+Header
+  use this if tag1 is present
+     use this if only tag 1 is present
+  use this also if tag1 is present
+Footer

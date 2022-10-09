@@ -1,0 +1,3 @@
+#SET var2 x
+${var1} vs ${var2} vs ${var3}.
+$${var1} vs $${var2} vs $${var3}

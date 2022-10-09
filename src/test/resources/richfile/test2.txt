@@ -1,0 +1,18 @@
+Header
+#IF ${tag1}
+  use this if tag1 is present
+  #IF ${tag2}
+     use this if both tags are present
+  #ELSE
+     use this if only tag 1 is present
+  #END
+  use this also if tag1 is present
+#ELSE
+  #IF ${tag2}
+     use this if only tag 2 is present
+  #ELSE
+     use this if neither tag is present
+  #END
+  use this if tag1 is not present
+#END
+Footer

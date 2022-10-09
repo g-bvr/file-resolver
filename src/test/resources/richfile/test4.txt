@@ -1,0 +1,5 @@
+Before
+#INCLUDE test1.txt
+Between
+   #INCLUDE test1.txt
+After

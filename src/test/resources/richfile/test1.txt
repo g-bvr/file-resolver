@@ -1,0 +1,7 @@
+Header
+#IF ${tag1}
+  use this if tag is present
+#ELSE
+  use this if tag is not present
+#END
+Footer

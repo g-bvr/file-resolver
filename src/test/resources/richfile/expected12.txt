@@ -1,0 +1,2 @@
+ vs x vs .
+${var1} vs ${var2} vs ${var3}

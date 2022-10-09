@@ -1,0 +1,3 @@
+#SET VAR1 value
+#SET VAR2 ${VAR1}
+${VAR2}
