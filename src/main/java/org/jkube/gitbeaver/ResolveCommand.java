@@ -29,6 +29,5 @@ public class ResolveCommand extends AbstractCommand {
         FileUtil.createIfNotExists(targetPath.getParent());
         onException(() -> Files.write(targetPath, new RichFile(workSpace.getWorkdir(), sourcePath).resolve(variables)))
                 .fail("Could not write resolved lines to "+targetPath);
-        log("Resolving "+sourcePath+" to "+targetPath);
     }
 }
