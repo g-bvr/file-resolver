@@ -1,5 +1,6 @@
 package org.jkube.gitbeaver.richfile.resolver;
 
+import org.jkube.gitbeaver.DefaultFileResolver;
 import org.jkube.gitbeaver.richfile.*;
 
 import java.util.List;
@@ -37,25 +38,7 @@ public class VariableResolver implements Resolver {
         variables.put(split[0], split[1]);
     }
 
-    public String substituteVariables(final String line) {
-        StringBuilder result = new StringBuilder();
-        String remain = line;
-        Matcher m;
-        while ((m = Constants.PROPERTY_REGEX.matcher(remain)).matches()) {
-            String var = m.group(1);
-            int start = m.start(1)-2;
-            int end = m.end(1)+1;
-            if ((start > 0) && (remain.charAt(start-1) == '$')) {
-                result.append(substituteVariables(remain.substring(0, start-1)));
-                result.append(remain, start, end);
-                remain = remain.substring(end);
-            } else {
-                String value = variables.getOrDefault(var, "");
-                remain = Macro.replace(remain, start, end, value);
-            }
-        }
-        result.append(remain);
-        return result.toString();
+    public String substituteVariables(String line) {
+        return DefaultFileResolver.substituteVariables(line ,variables);
     }
-
 }

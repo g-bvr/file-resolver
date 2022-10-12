@@ -1,5 +1,7 @@
 package org.jkube.gitbeaver.richfile;
 
+import org.jkube.gitbeaver.DefaultFileResolver;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -59,14 +61,9 @@ public class Macro {
 					subs.append(args[i]);
 				}
 			}
-			res = replace(res, m.start(1)-1, m.end(1)+1, subs.toString());
+			res = DefaultFileResolver.replace(res, m.start(1)-1, m.end(1)+1, subs.toString());
 		}
 		return res;
-	}
-
-	public static String replace(final String string, final int start, final int end, String subs) {
-		//System.out.println("Replace "+string+" from "+start+" to "+end+" with "+subs);
-		return string.substring(0, start)+subs+string.substring(end);
 	}
 
 }

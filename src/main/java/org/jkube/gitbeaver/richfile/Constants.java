@@ -11,6 +11,5 @@ public class Constants {
     public static final String ELSE = MARKER+"ELSE";
     public static final String IF = MARKER+"IF ";
     public static final String MACRO = MARKER+"MACRO ";
-    public static final Pattern PROPERTY_REGEX = Pattern.compile(".*\\$\\{([a-zA-Z0-9_-]+)\\}.*");
     public static final String COMMENT = "//";
 }
