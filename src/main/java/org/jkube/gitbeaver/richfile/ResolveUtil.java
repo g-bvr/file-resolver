@@ -1,5 +1,7 @@
 package org.jkube.gitbeaver.richfile;
 
+import org.jkube.gitbeaver.util.FileUtil;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -53,11 +55,7 @@ public class ResolveUtil {
     }
 
     public static List<LineInFile> readLines(Path path) {
-        try {
-            return addPath(Files.readAllLines(path), path);
-        } catch (IOException e) {
-            throw new RuntimeException("Problem reading file "+path, e);
-        }
+        return addPath(FileUtil.readLines(path), path);
     }
 
     /**

@@ -1,5 +1,6 @@
 package org.jkube.gitbeaver.richfile;
 
+import org.jkube.gitbeaver.util.FileUtil;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -16,7 +17,7 @@ public class TestRichFile {
     public static final String DIR = "src/test/resources/richfile";
 
     @Test
-    public void test() throws IOException {
+    public void test() {
         doTest("test1.txt", "expected1a.txt", "tag1");
         doTest("test1.txt", "expected1b.txt");
         doTest("test2.txt", "expected2a.txt");
@@ -42,10 +43,10 @@ public class TestRichFile {
         doTest("test17.txt", "expected17.txt");
     }
 
-    private void doTest(String test, String expected, String... tags) throws IOException {
+    private void doTest(String test, String expected, String... tags)  {
         RichFile f = new RichFile(Path.of(DIR, test));
         List<String> expectedLines;
-        expectedLines = Files.readAllLines(Path.of(DIR, expected));
+        expectedLines = FileUtil.readLines(Path.of(DIR, expected));
         final Map<String, String> settings = new LinkedHashMap<>();
         for (String tag : tags) {
             settings.put(tag, "yes");
