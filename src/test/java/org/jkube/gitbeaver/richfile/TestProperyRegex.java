@@ -1,7 +1,6 @@
 package org.jkube.gitbeaver.richfile;
 
-import org.jkube.gitbeaver.DefaultFileResolver;
-import org.jkube.gitbeaver.GitBeaver;
+import org.jkube.gitbeaver.util.VariableSubstitution;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
@@ -14,17 +13,17 @@ public class TestProperyRegex {
 
     @Test
     public void test() {
-        Matcher m1 = DefaultFileResolver.VAR_EXPRESSION.matcher("AB${CD }E");
+        Matcher m1 = VariableSubstitution.VAR_EXPRESSION.matcher("AB${CD }E");
         assertFalse(m1.matches());
 
-        Matcher m2 = DefaultFileResolver.VAR_EXPRESSION.matcher("AB${CD");
+        Matcher m2 = VariableSubstitution.VAR_EXPRESSION.matcher("AB${CD");
         assertFalse(m2.matches());
 
-        Matcher m3 = DefaultFileResolver.VAR_EXPRESSION.matcher("AB${CD}E");
+        Matcher m3 = VariableSubstitution.VAR_EXPRESSION.matcher("AB${CD}E");
         assertTrue(m3.matches());
         assertEquals("CD", m3.group(1));
 
-        Matcher m4 = DefaultFileResolver.VAR_EXPRESSION.matcher("AB${CD${EF}}");
+        Matcher m4 = VariableSubstitution.VAR_EXPRESSION.matcher("AB${CD${EF}}");
         assertTrue(m4.matches());
         assertEquals("EF", m4.group(1));
 

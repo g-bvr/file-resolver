@@ -3,10 +3,7 @@ package org.jkube.gitbeaver.richfile;
 import org.jkube.gitbeaver.richfile.resolver.*;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -43,7 +40,7 @@ public class RichFile {
     private final List<Resolver> primaryResolvers;
     private final List<Resolver> secondaryResolvers;
 
-    public static List<String> resolveVariables(final List<String> lines, final Map<String, String> variables) {
+    public static List<String> resolveVariables(final List<String> lines, final Optional<Map<String, String>> variables) {
         return new RichFile().resolveLines(ResolveUtil.addPath(lines, Path.of("")), variables);
     }
 
@@ -80,33 +77,33 @@ public class RichFile {
     }
 
     public List<String> resolve() {
-        return resolve(new LinkedHashMap<>());
+        return resolve(null);
     }
 
     public List<String> resolve(Map<String, String> variables) {
         usedFiles.add(mainFile);
-        return resolveLines(ResolveUtil.readLines(mainFile), variables);
+        return resolveLines(ResolveUtil.readLines(mainFile), Optional.of(variables));
     }
 
     public List<Path> getUsedFiles() {
         return usedFiles;
     }
 
-    private List<String> resolveLines(List<LineInFile> lines, Map<String, String> variables) {
+    private List<String> resolveLines(List<LineInFile> lines, Optional<Map<String, String>> variables) {
         return resolveLinesWithPath(lines, variables).stream().map(l -> l.line).collect(Collectors.toList());
     }
 
-    private List<LineInFile> resolveLinesWithPath(List<LineInFile> lines, Map<String, String> variables) {
+    private List<LineInFile> resolveLinesWithPath(List<LineInFile> lines, Optional<Map<String, String>> variables) {
         List<LineInFile> result = new ArrayList<>();
         List<LineInFile> remain = new ArrayList<>(lines);
-        VariableResolver variableResolver = new VariableResolver(variables);
+        Optional<VariableResolver> variableResolver = variables.map(v -> new VariableResolver(v));
         while (!remain.isEmpty()) {
             remain = resolveFirst(remain, variableResolver, result);
         }
         return result;
     }
 
-    private List<LineInFile> resolveFirst(List<LineInFile> lines, VariableResolver variableResolver, List<LineInFile> result) {
+    private List<LineInFile> resolveFirst(List<LineInFile> lines, Optional<VariableResolver> variableResolver, List<LineInFile> result) {
         LineInFile first = lines.get(0);
         List<LineInFile> remainingLines = lines.subList(1, lines.size());
         for (Resolver resolver : primaryResolvers) {
@@ -114,10 +111,13 @@ public class RichFile {
                 return resolver.resolve(first, remainingLines);
             }
         }
-        if (variableResolver.canResolve(first.line)) {
-            return variableResolver.resolve(first, remainingLines);
+        /// resolve set commands if varaible resolver is present
+        if (variableResolver.isPresent() && variableResolver.get().canResolve(first.line)) {
+            return variableResolver.get().resolve(first, remainingLines);
         }
-        LineInFile substituted = first.changeString(variableResolver.substituteVariables(first.line));
+        // substitute variables if variableresolver is present
+        LineInFile substituted = variableResolver.isEmpty() ? first
+            : first.changeString(variableResolver.get().substituteVariables(first.line));
         for (Resolver resolver : secondaryResolvers) {
             if (resolver.canResolve(substituted.line)) {
                 return resolver.resolve(substituted, remainingLines);

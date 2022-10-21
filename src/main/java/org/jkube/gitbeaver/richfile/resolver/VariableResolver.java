@@ -1,11 +1,10 @@
 package org.jkube.gitbeaver.richfile.resolver;
 
-import org.jkube.gitbeaver.DefaultFileResolver;
 import org.jkube.gitbeaver.richfile.*;
+import org.jkube.gitbeaver.util.VariableSubstitution;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
 
 public class VariableResolver implements Resolver {
 
@@ -39,6 +38,6 @@ public class VariableResolver implements Resolver {
     }
 
     public String substituteVariables(String line) {
-        return DefaultFileResolver.substituteVariables(line ,variables);
+        return VariableSubstitution.substituteVariables(line ,variables);
     }
 }

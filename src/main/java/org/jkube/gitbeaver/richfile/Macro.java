@@ -1,6 +1,6 @@
 package org.jkube.gitbeaver.richfile;
 
-import org.jkube.gitbeaver.DefaultFileResolver;
+import org.jkube.gitbeaver.util.VariableSubstitution;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +61,7 @@ public class Macro {
 					subs.append(args[i]);
 				}
 			}
-			res = DefaultFileResolver.replace(res, m.start(1)-1, m.end(1)+1, subs.toString());
+			res = VariableSubstitution.replace(res, m.start(1)-1, m.end(1)+1, subs.toString());
 		}
 		return res;
 	}

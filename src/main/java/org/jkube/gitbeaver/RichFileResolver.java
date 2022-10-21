@@ -9,7 +9,8 @@ import java.util.Map;
 
 public class RichFileResolver implements FileResolver {
     @Override
-    public List<String> resolve(Path workspacePath, Path relativePath, Map<String, String> variables) {
-        return new RichFile(workspacePath, relativePath).resolve(variables);
+    public List<String> resolve(Path workspacePath, Path relativePath, Map<String, String> variables, boolean resolveVariables) {
+        RichFile rf = new RichFile(workspacePath, relativePath);
+        return resolveVariables ? rf.resolve(variables) : rf.resolve();
     }
 }
