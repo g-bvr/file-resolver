@@ -82,7 +82,7 @@ public class RichFile {
 
     public List<String> resolve(Map<String, String> variables) {
         usedFiles.add(mainFile);
-        return resolveLines(ResolveUtil.readLines(mainFile), Optional.of(variables));
+        return resolveLines(ResolveUtil.readLines(mainFile), Optional.ofNullable(variables));
     }
 
     public List<Path> getUsedFiles() {
@@ -96,7 +96,7 @@ public class RichFile {
     private List<LineInFile> resolveLinesWithPath(List<LineInFile> lines, Optional<Map<String, String>> variables) {
         List<LineInFile> result = new ArrayList<>();
         List<LineInFile> remain = new ArrayList<>(lines);
-        Optional<VariableResolver> variableResolver = variables.map(v -> new VariableResolver(v));
+        Optional<VariableResolver> variableResolver = variables.map(VariableResolver::new);
         while (!remain.isEmpty()) {
             remain = resolveFirst(remain, variableResolver, result);
         }
