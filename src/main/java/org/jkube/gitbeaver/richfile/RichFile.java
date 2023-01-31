@@ -3,7 +3,10 @@ package org.jkube.gitbeaver.richfile;
 import org.jkube.gitbeaver.richfile.resolver.*;
 
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**

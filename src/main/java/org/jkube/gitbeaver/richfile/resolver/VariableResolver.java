@@ -1,6 +1,9 @@
 package org.jkube.gitbeaver.richfile.resolver;
 
-import org.jkube.gitbeaver.richfile.*;
+import org.jkube.gitbeaver.richfile.Constants;
+import org.jkube.gitbeaver.richfile.LineInFile;
+import org.jkube.gitbeaver.richfile.ResolveUtil;
+import org.jkube.gitbeaver.richfile.Resolver;
 import org.jkube.gitbeaver.util.VariableSubstitution;
 
 import java.util.List;

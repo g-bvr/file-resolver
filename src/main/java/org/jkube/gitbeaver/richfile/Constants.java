@@ -1,7 +1,5 @@
 package org.jkube.gitbeaver.richfile;
 
-import java.util.regex.Pattern;
-
 public class Constants {
     public static final String MARKER = "#";
     public static final String SETTINGS = MARKER+"SETTINGS ";
