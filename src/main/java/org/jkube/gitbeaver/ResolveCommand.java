@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.jkube.logging.Log.log;
 import static org.jkube.logging.Log.onException;
@@ -17,14 +18,20 @@ import static org.jkube.logging.Log.onException;
  */
 public class ResolveCommand extends AbstractCommand {
 
+    private static final String SOURCE = "source";
+    private static final String TARGET = "target";
+
     public ResolveCommand() {
-        super(2,2, "resolve");
+        super("resolve a file (using the rich file resolver)");
+        commandline("RESOLVE "+SOURCE+" TO "+TARGET);
+        argument(SOURCE, "the file to be resolved");
+        argument(TARGET, "the file into which the resolution result is written");
     }
 
     @Override
-    public void execute(Map<String, String> variables, WorkSpace workSpace, List<String> arguments) {
-        Path sourcePath = workSpace.getAbsolutePath(arguments.get(0));
-        Path targetPath = workSpace.getAbsolutePath(arguments.get(1));
+    public void execute(Map<String, String> variables, WorkSpace workSpace, Map<String, String> arguments) {
+        Path sourcePath = workSpace.getAbsolutePath(arguments.get(SOURCE));
+        Path targetPath = workSpace.getAbsolutePath(arguments.get(TARGET));
         log("Resolving "+sourcePath+" to "+targetPath);
         FileUtil.createIfNotExists(targetPath.getParent());
         onException(() -> Files.write(targetPath, new RichFile(workSpace.getWorkdir(), sourcePath).resolve(variables)))
