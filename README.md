@@ -1,4 +1,4 @@
-# Repository g-bvr/base
+# Repository g-bvr/file-resolver
 
 This repository defines a plugin that can be used to enhance the built-in set of commands
 to allow resolution of text files with variables, includes, macros and conditions.
@@ -21,4 +21,4 @@ is provided by the E. Breuninger GmbH & Co. in the public repository
 
 ## Documentation of defined commands
 
-A list of all commands defined by this plugin can be found in this [automatically generated documentation](https://htmlpreview.github.io/?https://raw.githubusercontent.com/g-bvr/base/main/doc/BasePlugin.html). 
+A list of all commands defined by this plugin can be found in this [automatically generated documentation](https://htmlpreview.github.io/?https://raw.githubusercontent.com/g-bvr/file-resolver/main/doc/ResolverPlugin.html). 
