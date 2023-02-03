@@ -10,7 +10,7 @@ by executing the following beaver script:
 
 ```
 GIT CLONE https://github.com/g-bvr file-resolver main
-PLUGIN COMPILE base/src/main/java
+PLUGIN COMPILE file-resolver/src/main/java
 PLUGIN ENABLE org.jkube.gitbeaver.ResolverPlugin
 ```
 
