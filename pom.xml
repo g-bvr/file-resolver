@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>org.jkube</groupId>
-            <artifactId>git-beaver</artifactId>
+            <artifactId>gitbeaver-base</artifactId>
             <version>${gitbeaver.version}</version>
         </dependency>
         <dependency>

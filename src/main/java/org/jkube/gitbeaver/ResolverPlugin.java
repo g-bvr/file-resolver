@@ -5,7 +5,7 @@ import org.jkube.gitbeaver.plugin.SimplePlugin;
 public class ResolverPlugin extends SimplePlugin {
 
     public ResolverPlugin() {
-        super(ResolveCommand.class);
+        super("Resolves text files by substituting variables, expanding macros and evaluate conditional sections", ResolveCommand.class);
     }
     @Override
     public void init() {
