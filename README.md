@@ -16,7 +16,7 @@ PLUGIN ENABLE org.jkube.gitbeaver.ResolverPlugin
 
 A more convenient way to build a gitbeaver release with multiple
 plugins (based on a tabular selection)
-is provided by the E. Breuninger GmbH & Co. in the public repository
+is provided by E. Breuninger GmbH & Co. in the public repository
 [e-breuninger/git-beaver](https://github.com/e-breuninger/git-beaver).
 
 ## Documentation of defined commands
