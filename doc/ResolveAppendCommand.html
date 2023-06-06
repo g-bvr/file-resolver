@@ -54,15 +54,24 @@ body {
 </head>
 <body>
 
-<h1 id="myheader">ResolverPlugin</h1>
+<h1 id="myheader">ResolveAppendCommand</h1>
 <h2>Purpose</h2>
-Resolves text files by substituting variables, expanding macros and evaluate conditional sections
-<h2>Commands</h2>
+resolve a file (using the rich file resolver)
+<h2>Variants</h2>
 <table id="mytable1">
-<tr><th>Command</th><th>Description</th></tr>
-  <tr><td><a href="ResolveAppendCommand.html">ResolveAppendCommand</a></td><td>resolve a file (using the rich file resolver)</td></tr>
-  <tr><td><a href="ResolveCommand.html">ResolveCommand</a></td><td>resolve a file (using the rich file resolver)</td></tr>
+<tr><th>Usage</th><th>Description</th></tr>
+  <tr><td>RESOLVE source AND APPEND TO target</td><td>resolve a file (using the rich file resolver)</td></tr>
 </table>
+
+<h2>Arguments</h2>
+
+<table id="mytable2">
+<tr><th>Argument</th><th>Value</th></tr>
+  <tr><td>source</td><td>the file to be resolved</td></tr>
+  <tr><td>target</td><td>the file to which the resolution result will be appended</td></tr>
+</table>
+<h2>Plugin</h2>
+This command is defined in <a href="ResolverPlugin.html">ResolverPlugin</a>
 </body>
 </html>
 
