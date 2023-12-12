@@ -63,11 +63,11 @@ public class IfResolver implements Resolver {
         if (split.length == 1) {
             result = !split[0].isBlank() && !split[0].equalsIgnoreCase(NO) && !split[0].equalsIgnoreCase(FALSE)
                      && !split[0].equals(ZERO);
-            System.out.println("Condition exist "+split[0]+" evaluates to "+result);
+            //System.out.println("Condition exist "+split[0]+" evaluates to "+result);
         }
         if (split.length == 2) {
             result = split[0].trim().equals(split[1].trim());
-            System.out.println(" Condition "+split[0]+" equals "+split[1]+" evaluates to "+result);
+            //System.out.println(" Condition "+split[0]+" equals "+split[1]+" evaluates to "+result);
         }
         return result;
     }
