@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
-import static org.jkube.logging.Log.log;
+import static org.jkube.gitbeaver.logging.Log.log;
 
 /**
  * Usage: resolve source target
